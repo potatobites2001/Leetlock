@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "LeetLock – DSA Focus",
+  "version": "1.0",
+  "description": "Stay on your current LeetCode problem until you finish it. No YouTube, no distractions.",
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>",
+    "https://leetcode.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://leetcode.com/problems/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "LeetLock"
+  }
+}
